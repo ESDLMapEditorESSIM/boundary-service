@@ -1,0 +1,16 @@
+{
+  "name": "boundaryservice-new",
+  "version": "0.0.1",
+  "description": "New boundary service",
+  "author": "Edwin Matthijssen <edwin.matthijssen@tno.nl>",
+  "license": "MIT",
+  "scripts": {
+    "docker:build": "docker build -t boundaryservice-new .",
+    "docker:tag": "docker tag boundaryservice-new 127.0.0.1:5000/boundaryservice-new",
+    "docker:publish": "docker push 127.0.0.1:5000/boundaryservice-new",
+    "docker:remove": "docker service rm boundaryservice-new",
+    "docker:deploy": "docker service create --name boundaryservice-new -p 4002:5000 127.0.0.1:5000/boundaryservice-new",
+    "docker": "npm run docker:build && npm run docker:tag && npm run docker:publish && npm run docker:remove && npm run docker:deploy",
+    "docker1": "npm run docker:build && npm run docker:tag && npm run docker:publish && npm run docker:deploy"
+  }
+}
